@@ -1,7 +1,14 @@
 import React from "react";
+import Login from "../Login/Login";
+import Signup from "../Login/Signup";
 
-const dashboard = () => {
-  return <div>tutor login/signup page</div>;
+const Tutor = () => {
+  return (
+    <div className="form-container">
+      <Login />
+      <Signup />
+    </div>
+  );
 };
 
-export default dashboard;
+export default Tutor;
