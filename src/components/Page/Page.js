@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Student, Tutor } from "../components";
+import { Home, Student, Tutor } from "..";
 import PageContent from "./PageContent";
 
 export default function Page(props) {
