@@ -8,6 +8,5 @@ const tutorSchema = new Schema(
   { subjects: [{}] }
 );
 
-
-const Tutor = model('Tutor', tutorSchema);
+const Tutor = model("Tutor", tutorSchema);
 module.exports = Tutor;
