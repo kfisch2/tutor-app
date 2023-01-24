@@ -7,3 +7,8 @@ const studentSchema = new Schema(
   { password: {} },
   { subjects: [{ name: "" }] }
 );
+
+
+const Student = model('Student', studentSchema);
+
+module.exports = Student;

@@ -7,3 +7,7 @@ const tutorSchema = new Schema(
   { email: {} },
   { subjects: [{}] }
 );
+
+
+const Tutor = model('Tutor', tutorSchema);
+module.exports = Tutor;
