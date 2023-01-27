@@ -15,7 +15,7 @@ const studentSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    subjects: [{ type: String, ref: "Subject" }],
+    // subjects: [{ type: String, ref: "Subject" }],
   },
   {
     toJSON: {
