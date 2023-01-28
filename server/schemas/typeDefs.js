@@ -2,11 +2,12 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Subject {
-    mathematics: [String]
-    science: [String]
-    socialScience: [String]
-    language: [String]
-    history: [String]
+    subjectName: [String]
+    # mathematics: [String]
+    # science: [String]
+    # socialScience: [String]
+    # language: [String]
+    # history: [String]
   }
 
   type Tutor {
@@ -22,7 +23,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    subjects: [Subject]
+    subjects: [String]
   }
 
   type Query {
@@ -38,11 +39,7 @@ const typeDefs = gql`
     # login:(email: String!, password: String!): Student
 
     addSubjects(
-      mathematics: [String]
-      science: [String]
-      language: [String]
-      socialScience: [String]
-      history: [String]
+      subjectName: [String]
     ): Subject
 
     addTutor(
