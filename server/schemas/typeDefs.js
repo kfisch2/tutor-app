@@ -1,21 +1,6 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type Tutor {
-    _id: ID
-    username: String
-    email: String
-    # subjects: [Subject]
-  }
-
-  type Student {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    # subjects: [String]
-  }
-
   type Subject {
     mathematics: [String]
     science: [String]
@@ -24,17 +9,32 @@ const typeDefs = gql`
     history: [String]
   }
 
+  type Tutor {
+    _id: ID
+    username: String
+    email: String
+    subjects: [Subject]
+    credentials: String
+  }
+
+  type Student {
+    _id: ID
+    username: String
+    email: String
+    password: String
+    subjects: [Subject]
+  }
+
   type Query {
     students: [Student]
     # student(username: String!): Student
-    # tutors: [Tutor]
+    tutors: [Tutor]
     subjects: [Subject]
     # tutor(subjects: String!): Tutor
     # tutor(username: String!): Tutor
   }
 
-  type Mutation { 
-
+  type Mutation {
     # login:(email: String!, password: String!): Student
 
     addSubjects(
@@ -45,21 +45,36 @@ const typeDefs = gql`
       history: [String]
     ): Subject
 
+    addTutor(
+      username: String!
+      email: String!
+      password: String!
+      subjects: [String]!
+      credentials: [String]!
+    ): Tutor
+
     addStudent(
       username: String!
       email: String!
       password: String!
-      # subjects: [String]
+      subjects: [String]
     ): Student
-    
+
     deleteAllSubjects(
       mathematics: String
       science: String
       history: String
       language: String
       socialScience: String
-      ): Subject
-  
+    ): Subject
+
+    deleteAllStudents(
+      username: String
+      password: String
+      email: String
+      subjects: [String]
+    ): Student
+
     # addTutor(username: String!, email: String!, password: String!)
   }
 `;

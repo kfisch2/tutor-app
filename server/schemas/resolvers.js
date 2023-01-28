@@ -16,6 +16,11 @@ const resolvers = {
       return student;
     },
 
+    addTutor: async(parent, args) => {
+      const tutor = await Tutor.create(args);
+      return tutor;
+    },
+
     addSubjects: async (parent, args) => {
       const subject = await Subject.create(args);
       return subject;
@@ -24,6 +29,11 @@ const resolvers = {
     deleteAllSubjects: async (parent, args) => {
       const deletedSubject = await Subject.deleteMany(args);
       return deletedSubject;
+    },
+
+    deleteAllStudents: async(parent, args) => {
+      const deletedStudents = await Student.deleteMany(args);
+      return deletedStudents;
     }
   },
 };
