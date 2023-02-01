@@ -13,35 +13,8 @@ export default function StudentDashboard() {
   console.log(science);
   return (
     <>
-      <form>
-
-        {/* subjects */}
-        <div className="dropdown">
-          <button
-            className="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div>Action</div> <div>Another</div> action Something else here
-          </div>
-        </div>
-
-
-
-
-
-        {/* credentials */}
-        {/* availability */}
-        {/* rate per hour */}
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+    <h1> STUDENT DASHBOARD</h1>
+    <h2>Welcome, Student!</h2>
     </>
   );
 }
