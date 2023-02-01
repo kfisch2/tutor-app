@@ -2,9 +2,9 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Subject {
-    subjectName: [String]
-    # mathematics: [String]
-    # science: [String]
+    # subjectName: [String]
+    mathematics: [String]
+    science: [String]
     # socialScience: [String]
     # language: [String]
     # history: [String]
@@ -38,9 +38,7 @@ const typeDefs = gql`
   type Mutation {
     # login:(email: String!, password: String!): Student
 
-    addSubjects(
-      subjectName: [String]
-    ): Subject
+    addSubjects(mathematics: [String], science: [String]): Subject
 
     addTutor(
       username: String!

@@ -2,7 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const subjectSchema = new Schema(
   {
-    subjectName: [{ type: String, required: true, trim: true }],
+    mathematics: [{type: String, unique: true, trim: true}],
+    science: [{type: String, unique: true, trim: true}]
   },
   {
     toJSON: {

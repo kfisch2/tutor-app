@@ -7,6 +7,10 @@ const Tutor = () => {
     <div className="form-container">
       <Login />
       <Signup />
+
+
+
+      
     </div>
   );
 };
