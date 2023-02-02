@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const studentSchema = new Schema(
   {
-    username: { type: String, required: true, trim: true },
+    username: { type: String, unique: true, required: true, trim: true },
     email: {
       type: String,
       required: true,
@@ -15,7 +15,7 @@ const studentSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    subjects: [{type: String, ref: "Subject"}],
+    subjects: [{ type: String, ref: "Subject" }],
   },
   {
     toJSON: {

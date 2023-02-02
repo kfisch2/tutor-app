@@ -5,9 +5,15 @@ const resolvers = {
     students: async () => {
       return Student.find().select("-password");
     },
+    student: async (parent, { username }) => {
+      return Student.findOne({ username }).select("-password");
+    },
     subjects: async () => {
-      return Subject.find().select("-__v")
-    }
+      return Subject.find().select("-__v");
+    },
+    tutor: async (parent, { subjects }) => {
+      return Tutor.findOne({ subjects }).select("-__v");
+    },
   },
 
   Mutation: {
@@ -16,7 +22,7 @@ const resolvers = {
       return student;
     },
 
-    addTutor: async(parent, args) => {
+    addTutor: async (parent, args) => {
       const tutor = await Tutor.create(args);
       return tutor;
     },
@@ -31,10 +37,10 @@ const resolvers = {
       return deletedSubject;
     },
 
-    deleteAllStudents: async(parent, args) => {
+    deleteAllStudents: async (parent, args) => {
       const deletedStudents = await Student.deleteMany(args);
       return deletedStudents;
-    }
+    },
   },
 };
 

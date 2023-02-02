@@ -16,7 +16,7 @@ const tutorSchema = new Schema(
       minlength: 5,
     },
     subjects: [{type: String, ref: "Subject"}],
-    credentials: { type: String },
+    credentials: [{ type: String }],
   },
   {
     toJSON: {

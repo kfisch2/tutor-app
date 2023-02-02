@@ -5,6 +5,9 @@ export const QUERY_SUBJECTS = gql`
     subjects {
       mathematics
       science
+      socialScience
+      history
+      language
     }
   }
 `;
@@ -15,6 +18,7 @@ export const QUERY_STUDENTS = gql`
       _id
       email
       username
+      subjects
     }
   }
 `;
@@ -25,6 +29,7 @@ export const QUERY_TUTOR = gql`
       _id
       email
       username
+      subjects
       credentials
     }
   }
