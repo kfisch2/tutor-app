@@ -4,10 +4,14 @@ import Signup from "../Login/Signup";
 
 const Tutor = () => {
   return (
-    <div className="form-container">
-      <Login />
-      <Signup />
-    </div>
+    <>
+    <h1>Thank you for helping students learn!</h1>
+      {" "}
+      <div className="form-container">
+        <Login />
+        <Signup />
+      </div>
+    </>
   );
 };
 
