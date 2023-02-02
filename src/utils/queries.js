@@ -34,3 +34,14 @@ export const QUERY_TUTOR = gql`
     }
   }
 `;
+
+export const QUERY_TUTOR_BY_SUBJECT = gql`
+  query tutorBySubject($subjects: String!) {
+    tutor(subjects: $subjects) {
+      username
+      email
+      credentials
+      subjects
+    }
+  }
+`;

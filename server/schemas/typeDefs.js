@@ -27,11 +27,11 @@ const typeDefs = gql`
   }
 
   type Query {
-    students: [Student]
-    student(username: String!): Student
-    tutors: [Tutor]
+    allStudents: [Student]
+    studentByUsername(username: String!): Student
+    allTutors: [Tutor]
     subjects: [Subject]
-    tutor(subjects: String!): Tutor
+    tutorBySubject(subjects: String!): [Tutor]
   }
 
   type Mutation {

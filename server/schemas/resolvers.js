@@ -2,17 +2,20 @@ const { Subject, Student, Tutor } = require("../models");
 
 const resolvers = {
   Query: {
-    students: async () => {
+    allStudents: async () => {
       return Student.find().select("-password");
     },
-    student: async (parent, { username }) => {
+    studentByUsername: async (parent, { username }) => {
       return Student.findOne({ username }).select("-password");
     },
     subjects: async () => {
       return Subject.find().select("-__v");
     },
-    tutor: async (parent, { subjects }) => {
-      return Tutor.findOne({ subjects }).select("-__v");
+    allTutors: async (parent, args) => {
+      return Tutor.find().select('-__v')
+    },
+    tutorBySubject: async (parent, args) => {
+      return Tutor.find(args).select("-__v");
     },
   },
 
@@ -31,6 +34,7 @@ const resolvers = {
       const subject = await Subject.create(args);
       return subject;
     },
+  
 
     deleteAllSubjects: async (parent, args) => {
       const deletedSubject = await Subject.deleteMany(args);
