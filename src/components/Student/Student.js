@@ -8,14 +8,17 @@ import './Student.css';
 const Student = () => {
   return (
     <>
-    <div className="student-page"></div>
-    {/* <h1>A tutor will be paired with you soon!</h1>
+    <div className="student-page">
+
+          {/* <h1>A tutor will be paired with you soon!</h1>
       {" "}
       <div className="form-container">
         <Login />
         <Signup />
       </div> */}
       <StudentDashboard/>
+    </div>
+
     </>
   );
 };
