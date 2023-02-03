@@ -1,0 +1,19 @@
+.header{
+    background-color: #67261c;
+    color: #B7B1AD;
+    font-size: 2rem;
+    height: 10vh;
+    padding-top: 2vh;
+    text-align: center;
+    font-family: 'Yeseva One', cursive;
+}
+
+
+.home-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 5vw;
+    padding-top: 2vh;
+    cursor:pointer;
+}
