@@ -13,8 +13,8 @@ export const QUERY_SUBJECTS = gql`
 `;
 
 export const QUERY_STUDENTS = gql`
-  query getStudents {
-    students {
+  query allStudents {
+    allStudents {
       _id
       email
       username
@@ -23,23 +23,25 @@ export const QUERY_STUDENTS = gql`
   }
 `;
 
-export const QUERY_TUTOR = gql`
-  query getTutors {
-    tutors {
+export const QUERY_TUTORS = gql`
+  query allTutors {
+    allTutors {
       _id
       email
       username
-      subjects
+      bio
       credentials
+      subjects
     }
   }
 `;
 
-export const QUERY_TUTOR_BY_SUBJECT = gql`
+export const QUERY_TUTORS_BY_SUBJECT = gql`
   query tutorBySubject($subjects: String!) {
-    tutor(subjects: $subjects) {
+    tutorBySubject(subjects: $subjects) {
       username
       email
+      bio
       credentials
       subjects
     }

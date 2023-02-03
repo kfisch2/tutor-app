@@ -15,6 +15,11 @@ const tutorSchema = new Schema(
       required: true,
       minlength: 5,
     },
+    bio: {
+      type: String,
+      required: true,
+      minlength: 10
+    },
     subjects: [{type: String, ref: "Subject"}],
     credentials: [{ type: String }],
   },
