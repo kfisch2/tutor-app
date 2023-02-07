@@ -15,7 +15,7 @@ const Student = () => {
       name: "Request a tutor",
     },
     {
-      name: "History",
+      name: "Saved tutors",
     },
   ]);
 
