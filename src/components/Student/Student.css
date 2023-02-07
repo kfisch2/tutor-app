@@ -2,3 +2,10 @@
   background-color: #2A3F3C;
   height:100vh;
 }
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 15px 0px;
+}
