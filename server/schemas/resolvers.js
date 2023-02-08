@@ -12,10 +12,10 @@ const resolvers = {
       return Subject.find().select("-__v");
     },
     allTutors: async (parent, args) => {
-      return Tutor.find().select('-__v')
+      return Tutor.find().select("-__v");
     },
-    tutorBySubject: async (parent, args) => {
-      return Tutor.find(args).select("-__v");
+    tutorBySubject: async (parent, { subjects }) => {
+      return Tutor.find({ subjects }).select("-__v");
     },
   },
 
@@ -34,11 +34,15 @@ const resolvers = {
       const subject = await Subject.create(args);
       return subject;
     },
-  
 
     deleteAllSubjects: async (parent, args) => {
       const deletedSubject = await Subject.deleteMany(args);
       return deletedSubject;
+    },
+
+    deleteAllTutors: async (parent, args) => {
+      const deletedTutors = await Tutor.deleteMany(args);
+      return deletedTutors;
     },
 
     deleteAllStudents: async (parent, args) => {

@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "../Login/Login.js";
 import Signup from "../Login/Signup.js";
-import StudentDashboard from "./StudentDashboard.js";
+import Page from "./Page/Page.js";
+import StudentHeader from "./StudentHeader.js";
 
-import './Student.css';
+import "./Student.css";
 
 const Student = () => {
+  const [page] = useState([
+    {
+      name: "Dashboard",
+    },
+    {
+      name: "Request a tutor",
+    },
+    {
+      name: "Saved tutors",
+    },
+  ]);
+
+  const [currentPage, setCurrentPage] = useState(page[0]);
+
   return (
     <>
-    <div className="student-page"></div>
-    {/* <h1>A tutor will be paired with you soon!</h1>
-      {" "}
-      <div className="form-container">
-        <Login />
-        <Signup />
-      </div> */}
-      <StudentDashboard/>
+      <StudentHeader
+        page={page}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+      <main className="student-page page-content">
+        <Page currentPage={currentPage}>Page: {page.name}</Page>
+      </main>
     </>
   );
 };

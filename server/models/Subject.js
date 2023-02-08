@@ -20,8 +20,8 @@ module.exports = Subject;
 
 // {
 //   "mathematics": ["pre-algebra", "algebra", "geometry", "trigonometry", "calculus"],
-//   "science": ["geology", "oceanography", "astronomy"],
+//   "science": ["geology", "oceanography", "astronomy", "chemistry", "physics"],
 //   "socialScience": ["economics", "u.s. government and politics", "human geography"],
-//   "language": ["spanish", "japanese", "french", "american sign language"],
+//   "language": ["chinese", "spanish", "japanese", "french", "american sign language"],
 //   "history": ["world history", "u.s. history", "european history", "east asia history"]
 // }
