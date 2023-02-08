@@ -14,6 +14,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    bio: String
     subjects: [String]
     credentials: [String]
   }
@@ -37,6 +38,7 @@ const typeDefs = gql`
   type Mutation {
     # login:(email: String!, password: String!): Student
 
+    # ADD DATA
     addSubjects(
       mathematics: [String]
       science: [String]
@@ -49,6 +51,7 @@ const typeDefs = gql`
       username: String!
       email: String!
       password: String!
+      bio: String!
       subjects: [String]!
       credentials: [String]!
     ): Tutor
@@ -60,6 +63,7 @@ const typeDefs = gql`
       subjects: [String]
     ): Student
 
+    # DELETE DATA
     deleteAllSubjects(
       mathematics: String
       science: String
@@ -68,11 +72,12 @@ const typeDefs = gql`
       socialScience: String
     ): Subject
 
+    deleteAllTutors(
+      _id: ID
+    ): Tutor
+
     deleteAllStudents(
-      username: String
-      password: String
-      email: String
-      subjects: [String]
+      _id: ID
     ): Student
 
   }
