@@ -4,37 +4,105 @@ import { QUERY_SUBJECTS } from "../../../utils/queries";
 import { QUERY_TUTORS_BY_SUBJECT } from "../../../utils/queries";
 
 const RequestForm = () => {
-  const { loading, error, data } = useQuery(QUERY_SUBJECTS);
+  const { data: subjectData } = useQuery(QUERY_SUBJECTS);
+  const [
+    getTutors,
+    { loading: loadingTutor, error: tutorError, data: tutorData },
+  ] = useLazyQuery(QUERY_TUTORS_BY_SUBJECT, {
+    fetchPolicy: "network-only",
+  });
   // POPULATE SUBJECTS
-  const populateTutors = (subject) => {
 
-  }
+  const populateTutors = () => {
+    loadingTutor
+      ? console.log("loading tutors...")
+      : console.log("not loading tutors");
+    tutorError
+      ? console.log("error loading tutors")
+      : console.log("no error loading tutuors");
+    tutorData ? console.log(tutorData) : console.log("no tutor data");
+  };
   return (
     <>
-      <h1>Request Form!</h1>
+      <h1 onClick={() => populateTutors()}>Request Form!</h1>
       <h2>Science: </h2>
-      {data?.subjects[0].science.map((subject, i) => {
-        return <button key={subject}>{subject}</button>;
+      {subjectData?.subjects[0].science.map((subject) => {
+        return (
+          <button
+            onClick={() => {
+              getTutors({ variables: { subjects: subject } });
+              populateTutors();
+            }}
+            className={subject}
+            key={subject}
+          >
+            {subject}
+          </button>
+        );
       })}
 
       <h2>Mathematics: </h2>
-      {data?.subjects[0].mathematics.map((subject, i) => {
-        return <button key={subject}>{subject}</button>;
+      {subjectData?.subjects[0].mathematics.map((subject, i) => {
+        return (
+          <button
+            onClick={() => {
+              getTutors({ variables: { subjects: subject } });
+              populateTutors();
+            }}
+            className={subject}
+            key={subject}
+          >
+            {subject}
+          </button>
+        );
       })}
 
       <h2>History: </h2>
-      {data?.subjects[0].history.map((subject, i) => {
-        return <button key={subject}>{subject}</button>;
+      {subjectData?.subjects[0].history.map((subject, i) => {
+        return (
+          <button
+            onClick={() => {
+              getTutors({ variables: { subjects: subject } });
+              populateTutors();
+            }}
+            className={subject}
+            key={subject}
+          >
+            {subject}
+          </button>
+        );
       })}
 
       <h2>Language: </h2>
-      {data?.subjects[0].language.map((subject, i) => {
-        return <button key={subject}>{subject}</button>;
+      {subjectData?.subjects[0].language.map((subject, i) => {
+        return (
+          <button
+            onClick={() => {
+              getTutors({ variables: { subjects: subject } });
+              populateTutors();
+            }}
+            className={subject}
+            key={subject}
+          >
+            {subject}
+          </button>
+        );
       })}
 
       <h2>Social Science: </h2>
-      {data?.subjects[0].socialScience.map((subject, i) => {
-        return <button key={subject}>{subject}</button>;
+      {subjectData?.subjects[0].socialScience.map((subject, i) => {
+        return (
+          <button
+            onClick={() => {
+              getTutors({ variables: { subjects: subject } });
+              populateTutors();
+            }}
+            className={subject}
+            key={subject}
+          >
+            {subject}
+          </button>
+        );
       })}
     </>
   );
