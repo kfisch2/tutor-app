@@ -1,6 +1,10 @@
-.student-page{
-  background-color: #2A3F3C;
-  height:100vh;
+body {
+  color: rgb(201, 204, 207);
+}
+
+.student-page {
+  background-color: #2a3f3c;
+  height: 100vh;
 }
 
 .links {
@@ -10,9 +14,17 @@
   margin: 15px 0px;
 }
 
+.subjects {
+  display: flex;
+  flex-direction: column;
+}
+
+.subjectBtn {
+  /* margin: 20px; */
+}
+
 .requestFormPage {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  
+  justify-content: space-evenly;
 }
