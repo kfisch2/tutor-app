@@ -13,7 +13,7 @@ const TutorCard = ({ queryCalled, data }) => {
       tutorInfo.appendChild(bio);
     }
   }
-  return <div className="tutorInfo"></div>;
+  return <div className="tutorInfo">Find your next tutor soon!</div>;
 };
 
 export default TutorCard;
