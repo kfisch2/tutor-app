@@ -5,40 +5,44 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_SUBJECTS } from "../../../utils/queries";
 import { QUERY_TUTORS_BY_SUBJECT } from "../../../utils/queries";
+import TutorCard from "./TutorCard";
 
 const RequestForm = () => {
   // POPULATE SUBJECTS
   const { data: subjectData } = useQuery(QUERY_SUBJECTS);
 
-  const [tutorsBySubject, setTutorsBySubject] = useState(null);
+  const [data, setData] = useState("");
+  const [queryCalled, setQueryCalled] = useState(false);
 
   const [fetchTutors] = useLazyQuery(QUERY_TUTORS_BY_SUBJECT);
 
   const renderTutors = (response) => {
     const tutor = response.tutorBySubject;
-    const tutorList = document.querySelector(".tutorList");
+    setData(tutor);
 
-    if (tutor) {
-      for (let i = 0; i < tutor.length; i++) {
-        const tutorContainer = document.createElement("div");
-        const tutorUsername = document.createElement("h4");
-        tutorUsername.textContent = tutor[i].username;
-        const tutorBio = document.createElement("p");
-        tutorBio.textContent = tutor[i].bio;
-        tutorContainer.appendChild(tutorUsername);
-        tutorContainer.appendChild(tutorBio);
-        const tutorSubjects = tutor[i].subjects;
-        const allSubjects = document.createElement("ul");
-        for (let j = 0; j < tutorSubjects.length; j++) {
-          const singleSubject = document.createElement("li");
-          singleSubject.textContent = tutorSubjects[j];
-          allSubjects.appendChild(singleSubject);
-          tutorContainer.appendChild(allSubjects);
-        }
+    // const tutorList = document.querySelector(".tutorList");
 
-        tutorList.appendChild(tutorContainer);
-      }
-    }
+    // if (tutor) {
+    //   for (let i = 0; i < tutor.length; i++) {
+    //     const tutorContainer = document.createElement("div");
+    //     const tutorUsername = document.createElement("h4");
+    //     tutorUsername.textContent = tutor[i].username;
+    //     const tutorBio = document.createElement("p");
+    //     tutorBio.textContent = tutor[i].bio;
+    //     tutorContainer.appendChild(tutorUsername);
+    //     tutorContainer.appendChild(tutorBio);
+    //     const tutorSubjects = tutor[i].subjects;
+    //     const allSubjects = document.createElement("ul");
+    //     for (let j = 0; j < tutorSubjects.length; j++) {
+    //       const singleSubject = document.createElement("li");
+    //       singleSubject.textContent = tutorSubjects[j];
+    //       allSubjects.appendChild(singleSubject);
+    //       tutorContainer.appendChild(allSubjects);
+    //     }
+
+    //     tutorList.appendChild(tutorContainer);
+    //   }
+    // }
   };
 
   return (
@@ -54,9 +58,10 @@ const RequestForm = () => {
           {subjectData?.subjects[0].science.map((subject) => (
             <>
               <Dropdown.Item
+                className={"dropdownItems"}
                 key={subject}
                 onClick={() => {
-                  setTutorsBySubject(subject);
+                  setQueryCalled(true);
                   fetchTutors({
                     variables: { subjects: subject },
                     onCompleted: (response) => {
@@ -79,10 +84,11 @@ const RequestForm = () => {
           {subjectData?.subjects[0].mathematics.map((subject) => (
             <>
               <Dropdown.Item
+                className={"dropdownItems"}
                 eventKey="1"
                 key={subject}
                 onClick={() => {
-                  setTutorsBySubject(subject);
+                  setQueryCalled(true);
                   fetchTutors({
                     variables: { subjects: subject },
                     onCompleted: (response) => {
@@ -105,10 +111,11 @@ const RequestForm = () => {
           {subjectData?.subjects[0].socialScience.map((subject) => (
             <>
               <Dropdown.Item
+                className={"dropdownItems"}
                 eventKey="1"
                 key={subject}
                 onClick={() => {
-                  setTutorsBySubject(subject);
+                  setQueryCalled(true);
                   fetchTutors({
                     variables: { subjects: subject },
                     onCompleted: (response) => {
@@ -131,10 +138,11 @@ const RequestForm = () => {
           {subjectData?.subjects[0].history.map((subject) => (
             <>
               <Dropdown.Item
+                className={"dropdownItems"}
                 eventKey="1"
                 key={subject}
                 onClick={() => {
-                  setTutorsBySubject(subject);
+                  setQueryCalled(true);
                   fetchTutors({
                     variables: { subjects: subject },
                     onCompleted: (response) => {
@@ -151,6 +159,7 @@ const RequestForm = () => {
         {""}
         {/* LANGUAGES */}
         <DropdownButton
+        
           as={ButtonGroup}
           title={"Language"}
           className="subjectBtn"
@@ -158,10 +167,11 @@ const RequestForm = () => {
           {subjectData?.subjects[0].language.map((subject) => (
             <>
               <Dropdown.Item
+                className={"dropdownItems"}
                 eventKey="1"
                 key={subject}
                 onClick={() => {
-                  setTutorsBySubject(subject);
+                  setQueryCalled(true);
                   fetchTutors({
                     variables: { subjects: subject },
                     onCompleted: (response) => {
@@ -176,9 +186,7 @@ const RequestForm = () => {
           ))}
         </DropdownButton>
       </div>
-      <div>
-        <ul className="tutorList" />
-      </div>
+      <TutorCard data={data} queryCalled={queryCalled} className="tutorCard" />
     </div>
   );
 };
