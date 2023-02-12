@@ -10,7 +10,7 @@
 .main-page button {
   border-radius: 5px;
   font-family: 'Yeseva One', cursive;
-  margin: 5px;
+  margin: 5px !important;
   background-color: #2A3F3C;
   color: white;
   font-size: large;
@@ -29,7 +29,7 @@
 }
 
 .login, .signup {
-  margin: 10px;
+  margin: 10px  !important;
   display: flex;
   flex-direction: column;
 }
