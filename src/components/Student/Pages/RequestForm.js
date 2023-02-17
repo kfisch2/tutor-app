@@ -12,7 +12,10 @@ const RequestForm = () => {
   const { data: subjectData } = useQuery(QUERY_SUBJECTS);
 
   const [data, setData] = useState("");
+  const [requestedSubject, setRequestedSubject] = useState("");
   const [queryCalled, setQueryCalled] = useState(false);
+
+  const [requestedCost, setRequestedCost] = useState(0);
 
   const [fetchTutors] = useLazyQuery(QUERY_TUTORS_BY_SUBJECT);
 
@@ -36,163 +39,158 @@ const RequestForm = () => {
 
   return (
     <div className="requestFormPage">
-      <div className="subjects">
-        <h2>Subject</h2>
-        {/* SCIENCE */}
-        <DropdownButton
-          as={ButtonGroup}
-          title={"Science"}
-          className="subjectBtn"
-        >
-          {subjectData?.subjects[0].science.map((subject) => (
-            <>
-              <Dropdown.Item
-                className={"dropdownItems"}
-                key={subject}
-                onClick={() => {
-                  setQueryCalled(true);
-                  fetchTutors({
-                    variables: { subjects: subject },
-                    onCompleted: (response) => {
-                      renderTutors(response);
-                    },
-                  });
-                }}
-              >
-                {subject}
-              </Dropdown.Item>{" "}
-            </>
-          ))}
-        </DropdownButton>
-        {/* MATHEMATICS */}
-        <DropdownButton
-          as={ButtonGroup}
-          title={"Mathematics"}
-          className="subjectBtn"
-        >
-          {subjectData?.subjects[0].mathematics.map((subject) => (
-            <>
-              <Dropdown.Item
-                className={"dropdownItems"}
-                eventKey="1"
-                key={subject}
-                onClick={() => {
-                  setQueryCalled(true);
-                  fetchTutors({
-                    variables: { subjects: subject },
-                    onCompleted: (response) => {
-                      renderTutors(response);
-                    },
-                  });
-                }}
-              >
-                {subject}
-              </Dropdown.Item>{" "}
-            </>
-          ))}
-        </DropdownButton>
-        {/* SOCIAL SCIENCES */}{" "}
-        <DropdownButton
-          as={ButtonGroup}
-          title={"Social Science"}
-          className="subjectBtn"
-        >
-          {subjectData?.subjects[0].socialScience.map((subject) => (
-            <>
-              <Dropdown.Item
-                className={"dropdownItems"}
-                eventKey="1"
-                key={subject}
-                onClick={() => {
-                  setQueryCalled(true);
-                  fetchTutors({
-                    variables: { subjects: subject },
-                    onCompleted: (response) => {
-                      renderTutors(response);
-                    },
-                  });
-                }}
-              >
-                {subject}
-              </Dropdown.Item>{" "}
-            </>
-          ))}
-        </DropdownButton>
-        {/* HISTORY */}
-        <DropdownButton
-          as={ButtonGroup}
-          title={"History"}
-          className="subjectBtn"
-        >
-          {subjectData?.subjects[0].history.map((subject) => (
-            <>
-              <Dropdown.Item
-                className={"dropdownItems"}
-                eventKey="1"
-                key={subject}
-                onClick={() => {
-                  setQueryCalled(true);
-                  fetchTutors({
-                    variables: { subjects: subject },
-                    onCompleted: (response) => {
-                      renderTutors(response);
-                    },
-                  });
-                }}
-              >
-                {subject}
-              </Dropdown.Item>{" "}
-            </>
-          ))}
-        </DropdownButton>
-        {""}
-        {/* LANGUAGES */}
-        <DropdownButton
-          as={ButtonGroup}
-          title={"Language"}
-          className="subjectBtn"
-        >
-          {subjectData?.subjects[0].language.map((subject) => (
-            <>
-              <Dropdown.Item
-                className={"dropdownItems"}
-                eventKey="1"
-                key={subject}
-                onClick={() => {
-                  setQueryCalled(true);
-                  fetchTutors({
-                    variables: { subjects: subject },
-                    onCompleted: (response) => {
-                      renderTutors(response);
-                    },
-                  });
-                }}
-              >
-                {subject}
-              </Dropdown.Item>{" "}
-            </>
-          ))}
-        </DropdownButton>
-      </div>
-      <div>
-        <h1>Cost</h1>
+      <form>
+        <div className="subjects">
+          <h2>Subject</h2>
+          {/* SCIENCE */}
+          <DropdownButton
+            as={ButtonGroup}
+            title={"Science"}
+            className="subjectBtn"
+          >
+            {subjectData?.subjects[0].science.map((subject) => (
+              <>
+                <Dropdown.Item
+                  className={"dropdownItems"}
+                  key={subject}
+                  onClick={() => {
+                    setRequestedSubject(subject);
+                  }}
+                >
+                  {subject}
+                </Dropdown.Item>{" "}
+              </>
+            ))}
+          </DropdownButton>
+          {/* MATHEMATICS */}
+          <DropdownButton
+            as={ButtonGroup}
+            title={"Mathematics"}
+            className="subjectBtn"
+          >
+            {subjectData?.subjects[0].mathematics.map((subject) => (
+              <>
+                <Dropdown.Item
+                  className={"dropdownItems"}
+                  eventKey="1"
+                  key={subject}
+                  onClick={() => {
+                    setRequestedSubject(subject);
+                  }}
+                >
+                  {subject}
+                </Dropdown.Item>{" "}
+              </>
+            ))}
+          </DropdownButton>
+          {/* SOCIAL SCIENCES */}{" "}
+          <DropdownButton
+            as={ButtonGroup}
+            title={"Social Science"}
+            className="subjectBtn"
+          >
+            {subjectData?.subjects[0].socialScience.map((subject) => (
+              <>
+                <Dropdown.Item
+                  className={"dropdownItems"}
+                  eventKey="1"
+                  key={subject}
+                  onClick={() => {
+                    setRequestedSubject(subject);
+                  }}
+                >
+                  {subject}
+                </Dropdown.Item>{" "}
+              </>
+            ))}
+          </DropdownButton>
+          {/* HISTORY */}
+          <DropdownButton
+            as={ButtonGroup}
+            title={"History"}
+            className="subjectBtn"
+          >
+            {subjectData?.subjects[0].history.map((subject) => (
+              <>
+                <Dropdown.Item
+                  className={"dropdownItems"}
+                  eventKey="1"
+                  key={subject}
+                  onClick={() => {
+                    setRequestedSubject(subject);
+                  }}
+                >
+                  {subject}
+                </Dropdown.Item>{" "}
+              </>
+            ))}
+          </DropdownButton>
+          {""}
+          {/* LANGUAGES */}
+          <DropdownButton
+            as={ButtonGroup}
+            title={"Language"}
+            className="subjectBtn"
+          >
+            {subjectData?.subjects[0].language.map((subject) => (
+              <>
+                <Dropdown.Item
+                  className={"dropdownItems"}
+                  eventKey="1"
+                  key={subject}
+                  onClick={() => {
+                    setRequestedSubject(subject);
+                  }}
+                >
+                  {subject}
+                </Dropdown.Item>{" "}
+              </>
+            ))}
+          </DropdownButton>
+        </div>
         <div>
-          <input
-            type="range"
-            id="cost"
-            min="0"
-            max="100"
-            step="5"
-            onClick={() => displayCost()}
-          ></input>
+          <h1>Cost</h1>
           <div>
-            <span>$</span>
-            <output id="value"></output>
-            <span>/hr</span>
+            <input
+              type="range"
+              id="cost"
+              min="0"
+              max="100"
+              step="5"
+              onClick={() => displayCost()}
+            ></input>
+            <div>
+              <span>$</span>
+              <output id="value"></output>
+              <span>/hr</span>
+            </div>
           </div>
         </div>
-      </div>
-      <TutorCard data={data} queryCalled={queryCalled} className="tutorCards" />
+        <div className="selectedSubject">{requestedSubject}</div>
+        <button
+          type="submit"
+          onClick={(e) => {
+            e.preventDefault();
+            setQueryCalled(true);
+            setRequestedCost(value.textContent);
+            fetchTutors({
+              variables: { subjects: requestedSubject },
+              onCompleted: (response) => {
+                renderTutors(response);
+              },
+            });
+          }}
+        >
+          Find your tutor!
+        </button>
+      </form>
+
+      <TutorCard
+        data={data}
+        queryCalled={queryCalled}
+        requestedCost={requestedCost}
+        className="tutorCards"
+      />
     </div>
   );
 };
