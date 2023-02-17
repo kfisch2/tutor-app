@@ -5,12 +5,15 @@ const TutorCard = ({ queryCalled, data }) => {
   if (queryCalled) {
     tutorInfo.textContent = "";
     for (let i = 0; i < data.length; i++) {
-      const username = document.createElement("h1");
-      const bio = document.createElement("p");
+      const tutorContainer = document.createElement("div");
+      const username = document.createElement("h2");
+      const cost = document.createElement("li");
       username.textContent = data[i].username;
-      bio.textContent = data[i].bio;
-      tutorInfo.appendChild(username);
-      tutorInfo.appendChild(bio);
+      cost.textContent = `$${data[i].cost}/hr`;
+      tutorContainer.appendChild(username);
+      tutorContainer.appendChild(cost);
+      tutorInfo.appendChild(tutorContainer);
+      tutorContainer.setAttribute("class", "tutorCard");
     }
   }
   return <div className="tutorInfo">Find your next tutor soon!</div>;

@@ -32,3 +32,11 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+.tutorCard {
+  border: #2a3f3c solid;
+  padding: 10px;
+  background-color: aliceblue;
+  color: #2a3f3c;
+  list-style: none;
+}

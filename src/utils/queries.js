@@ -30,6 +30,7 @@ export const QUERY_TUTORS = gql`
       email
       username
       bio
+      cost
       credentials
       subjects
     }
@@ -42,6 +43,7 @@ export const QUERY_TUTORS_BY_SUBJECT = gql`
       username
       email
       bio
+      cost
       credentials
       subjects
     }

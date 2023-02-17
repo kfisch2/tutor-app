@@ -16,39 +16,28 @@ const RequestForm = () => {
 
   const [fetchTutors] = useLazyQuery(QUERY_TUTORS_BY_SUBJECT);
 
+  const value = document.querySelector("#value");
+  const cost = document.querySelector("#cost");
+
+  const displayCost = () => {
+    cost.addEventListener("input", (event) => {
+      if (event.target.value) {
+        value.textContent = event.target.value;
+      } else {
+        value.textContent = "";
+      }
+    });
+  };
+
   const renderTutors = (response) => {
     const tutor = response.tutorBySubject;
     setData(tutor);
-
-    // const tutorList = document.querySelector(".tutorList");
-
-    // if (tutor) {
-    //   for (let i = 0; i < tutor.length; i++) {
-    //     const tutorContainer = document.createElement("div");
-    //     const tutorUsername = document.createElement("h4");
-    //     tutorUsername.textContent = tutor[i].username;
-    //     const tutorBio = document.createElement("p");
-    //     tutorBio.textContent = tutor[i].bio;
-    //     tutorContainer.appendChild(tutorUsername);
-    //     tutorContainer.appendChild(tutorBio);
-    //     const tutorSubjects = tutor[i].subjects;
-    //     const allSubjects = document.createElement("ul");
-    //     for (let j = 0; j < tutorSubjects.length; j++) {
-    //       const singleSubject = document.createElement("li");
-    //       singleSubject.textContent = tutorSubjects[j];
-    //       allSubjects.appendChild(singleSubject);
-    //       tutorContainer.appendChild(allSubjects);
-    //     }
-
-    //     tutorList.appendChild(tutorContainer);
-    //   }
-    // }
   };
 
   return (
     <div className="requestFormPage">
       <div className="subjects">
-        <h2>Which subject do you need help in?</h2>
+        <h2>Subject</h2>
         {/* SCIENCE */}
         <DropdownButton
           as={ButtonGroup}
@@ -159,7 +148,6 @@ const RequestForm = () => {
         {""}
         {/* LANGUAGES */}
         <DropdownButton
-        
           as={ButtonGroup}
           title={"Language"}
           className="subjectBtn"
@@ -186,7 +174,25 @@ const RequestForm = () => {
           ))}
         </DropdownButton>
       </div>
-      <TutorCard data={data} queryCalled={queryCalled} className="tutorCard" />
+      <div>
+        <h1>Cost</h1>
+        <div>
+          <input
+            type="range"
+            id="cost"
+            min="0"
+            max="100"
+            step="5"
+            onClick={() => displayCost()}
+          ></input>
+          <div>
+            <span>$</span>
+            <output id="value"></output>
+            <span>/hr</span>
+          </div>
+        </div>
+      </div>
+      <TutorCard data={data} queryCalled={queryCalled} className="tutorCards" />
     </div>
   );
 };

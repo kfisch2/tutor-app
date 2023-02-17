@@ -15,6 +15,7 @@ const typeDefs = gql`
     email: String
     password: String
     bio: String
+    cost: Int
     subjects: [String]
     credentials: [String]
   }
@@ -52,6 +53,7 @@ const typeDefs = gql`
       email: String!
       password: String!
       bio: String!
+      cost: Int!
       subjects: [String]!
       credentials: [String]!
     ): Tutor
