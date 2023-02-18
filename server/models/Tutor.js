@@ -20,6 +20,7 @@ const tutorSchema = new Schema(
       required: true,
       minlength: 10,
     },
+    cost: { type: Number, required: true },
     subjects: [{ type: String, ref: "Subject" }],
     credentials: [{ type: String }],
   },
@@ -35,13 +36,13 @@ module.exports = Tutor;
 
 // {  "username": "Tutor1",
 //   "email": "tutor1@gmail.com",  "password": "yay123", "credentials": ["Masters in Education", "Bachelors in Mathematics"],
-//   "bio": "Background in teaching math and science",  "subjects": ["algebra", "chemistry", "astronomy", "pre-algebra", "calculus", "trigonometry", "geometry", "physics", "oceanography", "geology"],
+//   "bio": "Background in teaching math and science",  "cost": 25, "subjects": ["algebra", "chemistry", "astronomy", "pre-algebra", "calculus", "trigonometry", "geometry", "physics", "oceanography", "geology"],
 
 // }
 
 // {  "username": "Tutor2",
 //   "email": "tutor2@gmail.com",  "password": "yay123", "credentials": ["Bachelors in Mathematics"],
-//   "bio": "Background in teaching math",  "subjects": ["algebra", "pre-algebra", "calculus", "trigonometry", "geometry"],
+//   "bio": "Background in teaching math",  "cost": 30, "subjects": ["algebra", "pre-algebra", "calculus", "trigonometry", "geometry"],
 
 // }
 
