@@ -1,18 +1,37 @@
-.student-page{
-  background-color: #2A3F3C;
-  height:100vh;
+* {
+  margin: 0 !important;
+}
+
+body {
+  color: rgb(201, 204, 207);
+}
+
+.student-page {
+  background-color: #2a3f3c;
+  height: 100vh;
 }
 
 .links {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 15px 0px;
+  margin: 10px !important;
 }
 
-.requestFormPage {
+.subjects {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  
+  align-items: center;
+}
+
+.subjectBtn {
+  margin: 5px !important;
+}
+
+.tutorCard {
+  border: #2a3f3c solid;
+  padding: 15px;
+  background-color: aliceblue;
+  color: #2a3f3c;
+  list-style: none;
 }

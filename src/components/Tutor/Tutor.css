@@ -11,7 +11,7 @@
     width: fit-content;
     border-radius: 5px;
     font-family: 'Yeseva One', cursive;
-    margin: 5px;
+    margin: 5px  !important;
     background-color: #B7B1AD;
     color: #67261c;
     font-size: large;
