@@ -20,22 +20,17 @@ body {
 
 .subjects {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 }
 
 .subjectBtn {
-  margin: 15px !important;
-}
-
-.requestFormPage {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  margin: 5px !important;
 }
 
 .tutorCard {
   border: #2a3f3c solid;
-  padding: 10px;
+  padding: 15px;
   background-color: aliceblue;
   color: #2a3f3c;
   list-style: none;

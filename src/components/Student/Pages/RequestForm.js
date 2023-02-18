@@ -39,7 +39,7 @@ const RequestForm = () => {
 
   return (
     <div className="requestFormPage">
-      <form>
+      <form className="requestForm">
         <div className="subjects">
           <h2>Subject</h2>
           {/* SCIENCE */}
@@ -147,26 +147,27 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-        </div>
-        <div>
-          <h1>Cost</h1>
-          <div>
-            <input
-              type="range"
-              id="cost"
-              min="0"
-              max="100"
-              step="5"
-              onClick={() => displayCost()}
-            ></input>
+          <div className="costDiv">
+            <h1>Cost</h1>
+            <div>
+              <input
+                type="range"
+                id="cost"
+                min="0"
+                max="100"
+                step="5"
+                onClick={() => displayCost()}
+              ></input>
+            </div>{" "}
             <div>
               <span>$</span>
               <output id="value"></output>
               <span>/hr</span>
             </div>
-          </div>
+          </div>{" "}
+          <div className="selectedSubject">{requestedSubject}</div>
         </div>
-        <div className="selectedSubject">{requestedSubject}</div>
+
         <button
           type="submit"
           onClick={(e) => {
@@ -184,11 +185,11 @@ const RequestForm = () => {
           Find your tutor!
         </button>
       </form>
-
       <TutorCard
         data={data}
         queryCalled={queryCalled}
         requestedCost={requestedCost}
+        requestedSubject={requestedSubject}
         className="tutorCards"
       />
     </div>
