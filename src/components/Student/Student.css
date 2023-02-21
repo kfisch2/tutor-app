@@ -24,6 +24,13 @@ body {
   align-items: center;
 }
 
+.dropdownSubject {
+  font-size: large;
+  font-weight: bold;
+  border-bottom: 1px solid;
+  text-align: left;
+}
+
 .subjectBtn {
   margin: 5px !important;
 }

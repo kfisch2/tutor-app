@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
   const tutorInfo = document.querySelector(".tutorInfo");
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   if (queryCalled) {
     tutorInfo.textContent = "";
     if (data) {
@@ -14,16 +21,16 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
           const tutorContainer = document.createElement("div");
           const username = document.createElement("h3");
           const cost = document.createElement("li");
-          const credentials = document.createElement('li');
-          const bio = document.createElement('p');
+          // const credentials = document.createElement('li');
+          // const bio = document.createElement('p');
           username.textContent = filteredData[i].username;
           cost.textContent = `$${filteredData[i].cost}/hr`;
-          credentials.textContent = `Credentials: ${filteredData[i].credentials}`;
-          bio.textContent = filteredData[i].bio;
+          // credentials.textContent = `Credentials: ${filteredData[i].credentials}`;
+          // bio.textContent = filteredData[i].bio;
           tutorContainer.appendChild(username);
           tutorContainer.appendChild(cost);
-          tutorContainer.appendChild(credentials);
-          tutorContainer.appendChild(bio);
+          // tutorContainer.appendChild(credentials);
+          // tutorContainer.appendChild(bio);
           tutorInfo.appendChild(tutorContainer);
           tutorContainer.setAttribute("class", "tutorCard col");
         }

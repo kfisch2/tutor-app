@@ -41,13 +41,16 @@ const RequestForm = () => {
     <div className="requestFormPage">
       <form className="requestForm">
         <div className="subjects">
-          <h2>Subject</h2>
-          {/* SCIENCE */}
           <DropdownButton
             as={ButtonGroup}
-            title={"Science"}
+            title={"Subject"}
             className="subjectBtn"
           >
+            {" "}
+            {/* SCIENCE */}
+            <Dropdown.Item className={"dropdownItems"} disabled>
+              <span className="dropdownSubject">{"Science"}</span>
+            </Dropdown.Item>
             {subjectData?.subjects[0].science.map((subject) => (
               <>
                 <Dropdown.Item
@@ -61,18 +64,14 @@ const RequestForm = () => {
                 </Dropdown.Item>{" "}
               </>
             ))}
-          </DropdownButton>
-          {/* MATHEMATICS */}
-          <DropdownButton
-            as={ButtonGroup}
-            title={"Mathematics"}
-            className="subjectBtn"
-          >
+            <Dropdown.Item className={"dropdownItems"} disabled>
+              <span className="dropdownSubject">{"Mathematics"}</span>
+            </Dropdown.Item>
+            {/* MATHEMATICS */}
             {subjectData?.subjects[0].mathematics.map((subject) => (
               <>
                 <Dropdown.Item
                   className={"dropdownItems"}
-                  eventKey="1"
                   key={subject}
                   onClick={() => {
                     setRequestedSubject(subject);
@@ -83,70 +82,7 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-          {/* SOCIAL SCIENCES */}{" "}
-          <DropdownButton
-            as={ButtonGroup}
-            title={"Social Science"}
-            className="subjectBtn"
-          >
-            {subjectData?.subjects[0].socialScience.map((subject) => (
-              <>
-                <Dropdown.Item
-                  className={"dropdownItems"}
-                  eventKey="1"
-                  key={subject}
-                  onClick={() => {
-                    setRequestedSubject(subject);
-                  }}
-                >
-                  {subject}
-                </Dropdown.Item>{" "}
-              </>
-            ))}
-          </DropdownButton>
-          {/* HISTORY */}
-          <DropdownButton
-            as={ButtonGroup}
-            title={"History"}
-            className="subjectBtn"
-          >
-            {subjectData?.subjects[0].history.map((subject) => (
-              <>
-                <Dropdown.Item
-                  className={"dropdownItems"}
-                  eventKey="1"
-                  key={subject}
-                  onClick={() => {
-                    setRequestedSubject(subject);
-                  }}
-                >
-                  {subject}
-                </Dropdown.Item>{" "}
-              </>
-            ))}
-          </DropdownButton>
-          {""}
-          {/* LANGUAGES */}
-          <DropdownButton
-            as={ButtonGroup}
-            title={"Language"}
-            className="subjectBtn"
-          >
-            {subjectData?.subjects[0].language.map((subject) => (
-              <>
-                <Dropdown.Item
-                  className={"dropdownItems"}
-                  eventKey="1"
-                  key={subject}
-                  onClick={() => {
-                    setRequestedSubject(subject);
-                  }}
-                >
-                  {subject}
-                </Dropdown.Item>{" "}
-              </>
-            ))}
-          </DropdownButton>
+          <div className="selectedSubject">Subject: {requestedSubject}</div>
           <div className="costDiv">
             <h1>Cost</h1>
             <div>
@@ -165,7 +101,6 @@ const RequestForm = () => {
               <span>/hr</span>
             </div>
           </div>{" "}
-          <div className="selectedSubject">{requestedSubject}</div>
         </div>
 
         <button
@@ -190,7 +125,6 @@ const RequestForm = () => {
         queryCalled={queryCalled}
         requestedCost={requestedCost}
         requestedSubject={requestedSubject}
-        className="tutorCards"
       />
     </div>
   );
