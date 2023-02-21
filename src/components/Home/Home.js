@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route } from "react-router-dom";
 import StudentDashboard from "../Student/StudentHeader";
+import './Home.css';
 
 export default function Home(props) {
   const handleClick = (input) => window.location.assign(`/${input}`);
