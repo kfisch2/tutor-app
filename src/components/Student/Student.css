@@ -41,4 +41,10 @@ body {
   background-color: aliceblue;
   color: #2a3f3c;
   list-style: none;
+  max-width: 20%;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
 }
