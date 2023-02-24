@@ -1,3 +1,23 @@
 .main-page{
     font-family: 'Asap Condensed', sans-serif;
 }
+
+.main-page h1{
+    color: black;
+}
+
+.button-container{
+    padding-top: 15px;
+}
+
+.about-description{
+    max-width: 30vw;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-page h4{
+    color: white;
+    font-size: small;
+}
