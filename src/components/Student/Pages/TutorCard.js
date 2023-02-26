@@ -3,6 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 
 const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
   const [show, setShow] = useState(false);
+  const [modalInfo, setmodalInfo] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -10,7 +11,7 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
   if (queryCalled) {
     if (data) {
       const filteredData = data.filter((tutor) => tutor.cost <= requestedCost);
-      if (filteredData.length == 0) {
+      if (filteredData.length === 0) {
         return <>No tutors found</>;
       } else {
         return (
@@ -19,14 +20,29 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
             <ul>
               {filteredData.map((tutor, i) => (
                 <>
-                  {" "}
-                  <Modal show={show} onHide={handleClose} centered>
+                  <li key={i} className="tutorCard">
+                    <div
+                      onClick={() => {
+                        setmodalInfo(tutor); handleShow();
+                      }}
+                    >
+                      <h2>{tutor.username}</h2>
+                      <p>${tutor.cost}/hr</p>
+                    </div>{" "}
+                  </li>{" "}
+                  {/* MODAL */}
+                  <Modal
+                    className="modal"
+                    show={show}
+                    onHide={handleClose}
+                    centered
+                  >
                     <Modal.Header>
-                      <Modal.Title>{tutor.username}</Modal.Title>
+                      <Modal.Title>{modalInfo.username}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <div>{tutor.bio}</div>
-                      <div>{tutor.credentials}</div>
+                      <div>{modalInfo.bio}</div>
+                      <div>{modalInfo.credentials}</div>
                     </Modal.Body>
                     <Modal.Footer>
                       <Button
@@ -40,16 +56,9 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
                       </Button>
                     </Modal.Footer>
                   </Modal>
-                  <li key={i} className="tutorCard">
-                    <div onClick={handleShow}>
-                      <h2>{tutor.username}</h2>
-                      <p>${tutor.cost}/hr</p>
-                    </div>{" "}
-                  </li>{" "}
                 </>
               ))}{" "}
             </ul>
-            {/* MODAL */}
           </>
         );
       }
