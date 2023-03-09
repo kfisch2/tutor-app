@@ -15,32 +15,48 @@ const RequestForm = () => {
   const [data, setData] = useState("");
   const [requestedSubject, setRequestedSubject] = useState("");
   const [queryCalled, setQueryCalled] = useState(false);
-
-  const [requestedCost, setRequestedCost] = useState(0);
-
   const [fetchTutors] = useLazyQuery(QUERY_TUTORS_BY_SUBJECT);
 
+  // Cost
+  const [requestedCost, setRequestedCost] = useState(0);
   const value = document.querySelector("#value");
-  const cost = document.querySelector("#cost");
-
   const displayCost = () => {
-    cost.addEventListener("input", (event) => {
-      if (event.target.value) {
-        value.textContent = event.target.value;
-      } else {
-        value.textContent = "";
-      }
-    });
+    value.textContent = requestedCost;
   };
 
+  // form submission
   const renderTutors = (response) => {
     const tutor = response.tutorBySubject;
     setData(tutor);
   };
 
+  const handleSubmit = (e) => {
+    setQueryCalled(true);
+    setRequestedCost(value.textContent);
+    fetchTutors({
+      variables: { subjects: requestedSubject },
+      onCompleted: (response) => {
+        renderTutors(response);
+      },
+    });
+  };
+
+  // enable button when form filled
+  const btn = document.getElementById("button");
+  if (requestedCost > 0 && requestedSubject) {
+    btn.disabled = false;
+  }
+
   return (
     <div className="requestFormPage">
-      <form className="requestForm">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="requestForm"
+      >
+        <h2>Select a subject</h2>
         <div className="subjects">
           <DropdownButton
             as={ButtonGroup}
@@ -159,11 +175,15 @@ const RequestForm = () => {
                 <div>
                   <input
                     type="range"
+                    value={requestedCost}
                     id="cost"
                     min="0"
                     max="100"
                     step="5"
-                    onClick={() => displayCost()}
+                    onChange={(e) => {
+                      setRequestedCost(e.target.value);
+                      displayCost();
+                    }}
                   ></input>
                 </div>{" "}
                 <div>
@@ -174,24 +194,11 @@ const RequestForm = () => {
               </div>
             </>
           ) : (
-            <div>Pick a subject!</div>
+            <div></div>
           )}
         </div>
 
-        <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            setQueryCalled(true);
-            setRequestedCost(value.textContent);
-            fetchTutors({
-              variables: { subjects: requestedSubject },
-              onCompleted: (response) => {
-                renderTutors(response);
-              },
-            });
-          }}
-        >
+        <button id="button" disabled type="submit">
           Find your tutor!
         </button>
       </form>

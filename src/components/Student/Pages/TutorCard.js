@@ -17,13 +17,15 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
         return (
           <>
             {/* TUTOR CARD */}
+
             <ul>
               {filteredData.map((tutor, i) => (
                 <>
                   <li key={i} className="tutorCard">
                     <div
                       onClick={() => {
-                        setmodalInfo(tutor); handleShow();
+                        setmodalInfo(tutor);
+                        handleShow();
                       }}
                     >
                       <h2>{tutor.username}</h2>
@@ -49,7 +51,7 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
                         variant="dark"
                         onClick={() => console.log("profile")}
                       >
-                        Go to {tutor.username}'s profile
+                        Go to {modalInfo.username}'s profile
                       </Button>{" "}
                       <Button variant="light" onClick={handleClose}>
                         Close
