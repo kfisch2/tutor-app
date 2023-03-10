@@ -7,7 +7,7 @@ import Home from "../Home/Home";
 export default function StudentHeader(props) {
   const { page = [], setCurrentPage, currentPage } = props;
   return (
-    <>
+    <div className="student-header">
       <nav className="links">
         {page.map((Page) => (
           <div
@@ -25,6 +25,6 @@ export default function StudentHeader(props) {
         ))}
       </nav>
       {/* <button onClick={() => setCurrentPage(Page)}>Request Tutor!</button> */}
-    </>
+    </div>
   );
 }
