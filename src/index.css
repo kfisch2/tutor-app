@@ -1,6 +1,6 @@
 .main-page {
   display: flex;
-  background-color: #B7B1AD;
+  background-color: #d5cfca;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -11,9 +11,10 @@
   border-radius: 5px;
   font-family: 'Asap Condensed', sans-serif;
   margin: 5px !important;
-  background-color: #2A3F3C;
-  color: white;
+  background-color: #d5cfca;
+  color: black;
   font-size: large;
+  border: solid 1px #393939;
 }
 
 .main-page button:hover{

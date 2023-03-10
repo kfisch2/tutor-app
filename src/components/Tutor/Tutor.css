@@ -3,18 +3,18 @@
     text-align: center;
     background-color: #645448;
     height: 100vh;
-    color: #B7B1AD;
+    color: #d5cfca;
     font-family: 'Asap Condensed', sans-serif;
 }
 
 .tutor-page button {
-    width: fit-content;
-    border-radius: 5px;
-    font-family: 'Asap Condensed', sans-serif;
-    margin: 5px  !important;
-    background-color: #B7B1AD;
-    color: #67261c;
-    font-size: large;
+  border-radius: 5px;
+  font-family: 'Asap Condensed', sans-serif;
+  margin: 5px !important;
+  background-color: #d5cfca;
+  color: black;
+  font-size: large;
+  border: solid 1px #393939;
   }
   
   .tutor-page button:hover{

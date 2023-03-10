@@ -3,9 +3,9 @@
 }
 
 body {
-  color: rgb(201, 204, 207);
+  color: rgb(0, 0, 0);
   text-align: center;
-  background-color: #B7B1AD;
+  background-color: #d5cfca;
 }
 
 .student-header{
@@ -13,7 +13,7 @@ body {
 }
 
 .student-page {
-  background-color: #2a3f3c;
+  background-color:#d5cfca;
   height: 100vh;
   font-family: 'Asap Condensed', sans-serif;
 }
@@ -49,11 +49,13 @@ body {
 }
 
 .links button{
-  font-weight: lighter;
-  background-color:#2a3f3c;
-  color: white;
-  min-width: 15px;
-  border-radius: 0;
+  border-radius: 5px;
+  font-family: 'Asap Condensed', sans-serif;
+  margin: 5px !important;
+  background-color: #d5cfca;
+  color: black;
+  font-size: large;
+  border: solid 1px #393939;
 }
 
 .links button:hover{
