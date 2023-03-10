@@ -3,12 +3,11 @@
     background-color: #67261c;
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     color: white;
     font-size: 2rem;
     height: 30vh;
     padding-top: 2vh;
-    text-align: center;
     font-family: 'Yeseva One', cursive;
 }
 

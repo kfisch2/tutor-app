@@ -6,6 +6,7 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_SUBJECTS } from "../../../utils/queries";
 import { QUERY_TUTORS_BY_SUBJECT } from "../../../utils/queries";
 import TutorCard from "./TutorCard";
+import './../../Student/Student.css';
 
 const RequestForm = () => {
   // POPULATE SUBJECTS
@@ -40,10 +41,12 @@ const RequestForm = () => {
   return (
     <div className="requestFormPage">
       <form className="requestForm">
+      <h2>Subject</h2>
         <div className="subjects">
-          <h2>Subject</h2>
+          
           {/* SCIENCE */}
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Science"}
             className="subjectBtn"
@@ -64,6 +67,7 @@ const RequestForm = () => {
           </DropdownButton>
           {/* MATHEMATICS */}
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Mathematics"}
             className="subjectBtn"
@@ -85,6 +89,7 @@ const RequestForm = () => {
           </DropdownButton>
           {/* SOCIAL SCIENCES */}{" "}
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Social Science"}
             className="subjectBtn"
@@ -106,6 +111,7 @@ const RequestForm = () => {
           </DropdownButton>
           {/* HISTORY */}
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"History"}
             className="subjectBtn"
@@ -128,6 +134,7 @@ const RequestForm = () => {
           {""}
           {/* LANGUAGES */}
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Language"}
             className="subjectBtn"
@@ -169,6 +176,7 @@ const RequestForm = () => {
         </div>
 
         <button
+          className="submit-button"
           type="submit"
           onClick={(e) => {
             e.preventDefault();

@@ -5,23 +5,23 @@
 body {
   color: rgb(0, 0, 0);
   text-align: center;
-  background-color: #d5cfca;
+  background-color: white;
 }
 
-.student-header{
-  display: inline-block
+.student-header {
+  display: inline-block;
 }
 
 .student-page {
-  background-color:#d5cfca;
+  background-color: white;
   height: 100vh;
-  font-family: 'Asap Condensed', sans-serif;
+  font-family: "Asap Condensed", sans-serif;
 }
 
 .links {
   width: 100%;
   height: 5rem;
-  font-size: .7em;
+  font-size: 0.7em;
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
@@ -48,16 +48,35 @@ body {
   list-style: none;
 }
 
-.links button{
+.links button,
+.submit-button {
   border-radius: 5px;
-  font-family: 'Asap Condensed', sans-serif;
+  font-family: "Asap Condensed", sans-serif;
   margin: 5px !important;
-  background-color: #d5cfca;
+  background-color: white;
   color: black;
   font-size: large;
   border: solid 1px #393939;
 }
 
-.links button:hover{
-  background-color:#222c2b;
+.links button:hover,
+.submit-button:hover {
+  background-color: #222c2b7b;
+}
+
+/* request form css follows*/
+
+.requestFormPage{
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.subjects {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.costDiv{
+  display: inline-block;
 }

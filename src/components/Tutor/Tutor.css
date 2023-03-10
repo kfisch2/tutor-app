@@ -1,23 +1,50 @@
-.tutor-page{
-    padding-top: 8vh;
-    text-align: center;
-    background-color: #645448;
-    height: 100vh;
-    color: #d5cfca;
-    font-family: 'Asap Condensed', sans-serif;
+.tutor-page {
+  padding-top: 8vh;
+  text-align: center;
+  background-color: #fff;
+  height: 100vh;
+  color: white;
+  font-family: "Asap Condensed", sans-serif;
 }
 
 .tutor-page button {
   border-radius: 5px;
-  font-family: 'Asap Condensed', sans-serif;
+  font-family: "Asap Condensed", sans-serif;
   margin: 5px !important;
-  background-color: #d5cfca;
+  background-color: white;
   color: black;
   font-size: large;
   border: solid 1px #393939;
-  }
-  
-  .tutor-page button:hover{
-    cursor: pointer;
-    translate: 1px;
-  }
+}
+
+.tutor-page button:hover {
+  cursor: pointer;
+  translate: 1px;
+}
+
+/* forms styling follows */
+
+.login,
+.signup{
+  color: black;
+}
+
+.login input,
+.signup input{
+  border: 2px solid rgb(170, 169, 169);
+}
+
+.login input:hover,
+.signup input:hover{
+  border: 2px solid rgb(0, 102, 255);
+}
+
+
+.login button,
+.signup button{
+  color: white;
+  border: none;
+  background-color: rgb(48, 107, 159);
+}
+
+
