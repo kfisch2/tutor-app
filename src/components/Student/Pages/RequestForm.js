@@ -6,6 +6,7 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_SUBJECTS } from "../../../utils/queries";
 import { QUERY_TUTORS_BY_SUBJECT } from "../../../utils/queries";
 import TutorCard from "./TutorCard";
+import './../../Student/Student.css';
 
 const RequestForm = () => {
   // Render subjects
@@ -59,6 +60,7 @@ const RequestForm = () => {
         <h2>Select a subject</h2>
         <div className="subjects">
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Science"}
             className="subjectBtn"
@@ -80,6 +82,7 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Math"}
             className="subjectBtn"
@@ -101,6 +104,7 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Social Sciences"}
             className="subjectBtn"
@@ -122,6 +126,7 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"History"}
             className="subjectBtn"
@@ -144,6 +149,7 @@ const RequestForm = () => {
           </DropdownButton>
 
           <DropdownButton
+          variant='secondary'
             as={ButtonGroup}
             title={"Language"}
             className="subjectBtn"
@@ -197,7 +203,6 @@ const RequestForm = () => {
             <div></div>
           )}
         </div>
-
         <button id="button" disabled type="submit">
           Find your tutor!
         </button>

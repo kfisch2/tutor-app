@@ -6,7 +6,7 @@ export default function index() {
   return (
     <>
       <div className="header">
-        TEACH AND LEARN
+        <h1>TEACH AND LEARN</h1>
         <a href='/'><img src={require('./home-icon.png')}className="home-button" onClick={() => handleClick()}></img></a>
       </div>
     </>

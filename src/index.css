@@ -1,7 +1,8 @@
 .main-page {
   display: flex;
-  background-color: #B7B1AD;
-  justify-content: center;
+  padding-top: 10vh;
+  background-color: white;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   height: 100vh;
@@ -9,14 +10,15 @@
 
 .main-page button {
   border-radius: 5px;
-  font-family: 'Asap Condensed', sans-serif;
+  font-family: "Asap Condensed", sans-serif;
   margin: 5px !important;
-  background-color: #2A3F3C;
-  color: white;
+  background-color: white;
+  color: black;
   font-size: large;
+  border: solid 1px #393939;
 }
 
-.main-page button:hover{
+.main-page button:hover {
   cursor: pointer;
   translate: 1px;
 }
@@ -28,8 +30,9 @@
   align-items: center;
 }
 
-.login, .signup {
-  margin: 10px  !important;
+.login,
+.signup {
+  margin: 10px !important;
   display: flex;
   flex-direction: column;
 }
