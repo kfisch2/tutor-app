@@ -9,48 +9,64 @@ import TutorCard from "./TutorCard";
 import './../../Student/Student.css';
 
 const RequestForm = () => {
-  // POPULATE SUBJECTS
+  // Render subjects
   const { data: subjectData } = useQuery(QUERY_SUBJECTS);
 
+  // Tutor data
   const [data, setData] = useState("");
   const [requestedSubject, setRequestedSubject] = useState("");
   const [queryCalled, setQueryCalled] = useState(false);
-
-  const [requestedCost, setRequestedCost] = useState(0);
-
   const [fetchTutors] = useLazyQuery(QUERY_TUTORS_BY_SUBJECT);
 
+  // Cost
+  const [requestedCost, setRequestedCost] = useState(0);
   const value = document.querySelector("#value");
-  const cost = document.querySelector("#cost");
-
   const displayCost = () => {
-    cost.addEventListener("input", (event) => {
-      if (event.target.value) {
-        value.textContent = event.target.value;
-      } else {
-        value.textContent = "";
-      }
-    });
+    value.textContent = requestedCost;
   };
 
+  // form submission
   const renderTutors = (response) => {
     const tutor = response.tutorBySubject;
     setData(tutor);
   };
 
+  const handleSubmit = (e) => {
+    setQueryCalled(true);
+    setRequestedCost(value.textContent);
+    fetchTutors({
+      variables: { subjects: requestedSubject },
+      onCompleted: (response) => {
+        renderTutors(response);
+      },
+    });
+  };
+
+  // enable button when form filled
+  const btn = document.getElementById("button");
+  if (requestedCost > 0 && requestedSubject) {
+    btn.disabled = false;
+  }
+
   return (
     <div className="requestFormPage">
-      <form className="requestForm">
-      <h2>Subject</h2>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="requestForm"
+      >
+        <h2>Select a subject</h2>
         <div className="subjects">
-          
-          {/* SCIENCE */}
           <DropdownButton
           variant='secondary'
             as={ButtonGroup}
             title={"Science"}
             className="subjectBtn"
           >
+            {" "}
+            {/* SCIENCE */}
             {subjectData?.subjects[0].science.map((subject) => (
               <>
                 <Dropdown.Item
@@ -65,18 +81,18 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-          {/* MATHEMATICS */}
           <DropdownButton
           variant='secondary'
             as={ButtonGroup}
-            title={"Mathematics"}
+            title={"Math"}
             className="subjectBtn"
           >
+            {" "}
+            {/* MATH */}
             {subjectData?.subjects[0].mathematics.map((subject) => (
               <>
                 <Dropdown.Item
                   className={"dropdownItems"}
-                  eventKey="1"
                   key={subject}
                   onClick={() => {
                     setRequestedSubject(subject);
@@ -87,18 +103,18 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-          {/* SOCIAL SCIENCES */}{" "}
           <DropdownButton
           variant='secondary'
             as={ButtonGroup}
-            title={"Social Science"}
+            title={"Social Sciences"}
             className="subjectBtn"
           >
+            {" "}
+            {/* SocialScience */}
             {subjectData?.subjects[0].socialScience.map((subject) => (
               <>
                 <Dropdown.Item
                   className={"dropdownItems"}
-                  eventKey="1"
                   key={subject}
                   onClick={() => {
                     setRequestedSubject(subject);
@@ -109,18 +125,18 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-          {/* HISTORY */}
           <DropdownButton
           variant='secondary'
             as={ButtonGroup}
             title={"History"}
             className="subjectBtn"
           >
+            {" "}
+            {/* History */}
             {subjectData?.subjects[0].history.map((subject) => (
               <>
                 <Dropdown.Item
                   className={"dropdownItems"}
-                  eventKey="1"
                   key={subject}
                   onClick={() => {
                     setRequestedSubject(subject);
@@ -131,19 +147,19 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-          {""}
-          {/* LANGUAGES */}
+
           <DropdownButton
           variant='secondary'
             as={ButtonGroup}
             title={"Language"}
             className="subjectBtn"
           >
+            {" "}
+            {/* Languages */}
             {subjectData?.subjects[0].language.map((subject) => (
               <>
                 <Dropdown.Item
                   className={"dropdownItems"}
-                  eventKey="1"
                   key={subject}
                   onClick={() => {
                     setRequestedSubject(subject);
@@ -154,52 +170,52 @@ const RequestForm = () => {
               </>
             ))}
           </DropdownButton>
-          <div className="costDiv">
-            <h1>Cost</h1>
-            <div>
-              <input
-                type="range"
-                id="cost"
-                min="0"
-                max="100"
-                step="5"
-                onClick={() => displayCost()}
-              ></input>
-            </div>{" "}
-            <div>
-              <span>$</span>
-              <output id="value"></output>
-              <span>/hr</span>
-            </div>
-          </div>{" "}
-          <div className="selectedSubject">{requestedSubject}</div>
         </div>
-
-        <button
-          className="submit-button"
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            setQueryCalled(true);
-            setRequestedCost(value.textContent);
-            fetchTutors({
-              variables: { subjects: requestedSubject },
-              onCompleted: (response) => {
-                renderTutors(response);
-              },
-            });
-          }}
-        >
+        <div className="costDiv">
+          {" "}
+          {requestedSubject ? (
+            <>
+              <div className="selectedSubject">Subject: {requestedSubject}</div>
+              <div className="costDiv">
+                <h1>Cost</h1>
+                <div>
+                  <input
+                    type="range"
+                    value={requestedCost}
+                    id="cost"
+                    min="0"
+                    max="100"
+                    step="5"
+                    onChange={(e) => {
+                      setRequestedCost(e.target.value);
+                      displayCost();
+                    }}
+                  ></input>
+                </div>{" "}
+                <div>
+                  <span>$</span>
+                  <output id="value"></output>
+                  <span>/hr</span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div></div>
+          )}
+        </div>
+        <button id="button" disabled type="submit">
           Find your tutor!
         </button>
       </form>
-      <TutorCard
-        data={data}
-        queryCalled={queryCalled}
-        requestedCost={requestedCost}
-        requestedSubject={requestedSubject}
-        className="tutorCards"
-      />
+      <div className="tutorCards">
+        {" "}
+        <TutorCard
+          data={data}
+          queryCalled={queryCalled}
+          requestedCost={requestedCost}
+          requestedSubject={requestedSubject}
+        />
+      </div>
     </div>
   );
 };
