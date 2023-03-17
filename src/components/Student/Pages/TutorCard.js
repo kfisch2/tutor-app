@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
+const TutorCard = ({ queryCalled, data, requestedCost }) => {
   const [show, setShow] = useState(false);
   const [modalInfo, setmodalInfo] = useState({});
 
@@ -19,7 +19,7 @@ const TutorCard = ({ queryCalled, data, requestedCost, requestedSubject }) => {
             {/* TUTOR CARD */}
 
             <ul>
-              {filteredData.map((tutor, i) => (
+              {filteredData?.map((tutor, i) => (
                 <>
                   <li key={i} className="tutorCard">
                     <div

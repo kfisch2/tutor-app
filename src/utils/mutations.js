@@ -1,5 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const addStudent = gql`
+export const TUTOR_MUTATIONS = gql`
+    type Mutation {
+        addTutor(username: String!, email: String!, password: String!): Tutor
+    }
 
 `

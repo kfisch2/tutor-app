@@ -1,4 +1,5 @@
 const { Subject, Student, Tutor } = require("../models");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
@@ -29,6 +30,38 @@ const resolvers = {
       const tutor = await Tutor.create(args);
       return tutor;
     },
+
+    // loginStudent: async (parent, {email, password}) => {
+    //   const student = await Student.findOne({email});
+
+    //   if (!student) {
+    //     throw new AuthenticationError('Incorrect login credentials')
+    //   }
+
+    //   const correctPw = await student.isCorrectPassword(password);
+
+    //   if (!correctPw) {
+    //     throw new AuthenticationError('Incorrect login credentials')
+    //   }
+
+    //   return student;
+    // },
+
+    // loginTutor: async (parent, {email, password}) => {
+    //   const tutor = await Tutor.findOne({email});
+
+    //   if (!tutor) {
+    //     throw new AuthenticationError('Incorrect login credentials');
+    //   }
+
+    //   const correctPw = await tutor.isCorrectPassword(password);
+    //   if (!correctPw) {
+    //     throw new AuthenticationError('Incorrect login credentials')
+    //   }
+
+    //   return tutor;
+    // },
+
 
     addSubjects: async (parent, args) => {
       const subject = await Subject.create(args);
