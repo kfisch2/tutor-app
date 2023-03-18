@@ -6,7 +6,7 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { QUERY_SUBJECTS } from "../../../utils/queries";
 import { QUERY_TUTORS_BY_SUBJECT } from "../../../utils/queries";
 import TutorCard from "./TutorCard";
-import './../../Student/Student.css';
+import "./../../Student/Student.css";
 
 const RequestForm = () => {
   // Render subjects
@@ -20,10 +20,12 @@ const RequestForm = () => {
 
   // Cost
   const [requestedCost, setRequestedCost] = useState(0);
-  const value = document.querySelector("#value");
-  const displayCost = () => {
-    value.textContent = requestedCost;
-  };
+  const cost = document.querySelector(".costDisplay");
+  // if ((requestedCost === 0)) {
+  //   cost.style.display = "none";
+  // } else {
+  //   cost.style.display = "block";
+  // }
 
   // form submission
   const renderTutors = (response) => {
@@ -31,9 +33,11 @@ const RequestForm = () => {
     setData(tutor);
   };
 
-  const handleSubmit = (e) => {
+  const form = document.querySelector(".requestForm");
+
+  const handleSubmit = () => {
+    form.style.display = "none";
     setQueryCalled(true);
-    setRequestedCost(value.textContent);
     fetchTutors({
       variables: { subjects: requestedSubject },
       onCompleted: (response) => {
@@ -60,7 +64,7 @@ const RequestForm = () => {
         <h2>Select a subject</h2>
         <div className="subjects">
           <DropdownButton
-          variant='secondary'
+            variant="secondary"
             as={ButtonGroup}
             title={"Science"}
             className="subjectBtn"
@@ -82,7 +86,7 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
           <DropdownButton
-          variant='secondary'
+            variant="secondary"
             as={ButtonGroup}
             title={"Math"}
             className="subjectBtn"
@@ -104,7 +108,7 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
           <DropdownButton
-          variant='secondary'
+            variant="secondary"
             as={ButtonGroup}
             title={"Social Sciences"}
             className="subjectBtn"
@@ -126,7 +130,7 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
           <DropdownButton
-          variant='secondary'
+            variant="secondary"
             as={ButtonGroup}
             title={"History"}
             className="subjectBtn"
@@ -149,7 +153,7 @@ const RequestForm = () => {
           </DropdownButton>
 
           <DropdownButton
-          variant='secondary'
+            variant="secondary"
             as={ButtonGroup}
             title={"Language"}
             className="subjectBtn"
@@ -171,32 +175,32 @@ const RequestForm = () => {
             ))}
           </DropdownButton>
         </div>
-        <div className="costDiv">
+        <div>
           {" "}
           {requestedSubject ? (
             <>
               <div className="selectedSubject">Subject: {requestedSubject}</div>
               <div className="costDiv">
                 <h1>Cost</h1>
-                <div>
-                  <input
-                    type="range"
-                    value={requestedCost}
-                    id="cost"
-                    min="0"
-                    max="100"
-                    step="5"
-                    onChange={(e) => {
-                      setRequestedCost(e.target.value);
-                      displayCost();
-                    }}
-                  ></input>
-                </div>{" "}
-                <div>
-                  <span>$</span>
-                  <output id="value"></output>
-                  <span>/hr</span>
-                </div>
+                <DropdownButton>
+                  <Dropdown.Item onClick={() => setRequestedCost(10)}>
+                    $10/hr
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setRequestedCost(20)}>
+                    $20/hr
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setRequestedCost(30)}>
+                    $30/hr
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setRequestedCost(40)}>
+                    $40/hr
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => setRequestedCost(100000)}>
+                    $50+
+                  </Dropdown.Item>
+                </DropdownButton>
+
+                <div className="costDisplay">${requestedCost}/hr</div>
               </div>
             </>
           ) : (
@@ -212,8 +216,11 @@ const RequestForm = () => {
         <TutorCard
           data={data}
           queryCalled={queryCalled}
+          setQueryCalled={setQueryCalled}
           requestedCost={requestedCost}
+          setRequestedCost={setRequestedCost}
           requestedSubject={requestedSubject}
+          setRequestedSubject={setRequestedSubject}
         />
       </div>
     </div>

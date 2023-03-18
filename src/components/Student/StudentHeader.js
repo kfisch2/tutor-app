@@ -1,8 +1,4 @@
 import React from "react";
-import { useQuery, useLazyQuery } from "@apollo/client";
-import { QUERY_SUBJECTS, QUERY_TUTORS_BY_SUBJECT } from "../../utils/queries";
-import RequestForm from "./Pages/RequestForm";
-import Home from "../Home/Home";
 
 export default function StudentHeader(props) {
   const { page = [], setCurrentPage, currentPage } = props;

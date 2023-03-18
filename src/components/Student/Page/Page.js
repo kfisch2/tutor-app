@@ -13,10 +13,8 @@ export default function Page({ currentPage }) {
         return <Dashboard />;
       case "Request a tutor":
         return <RequestForm />;
-      case "History":
+      case "Saved tutors":
         return <RequestHistory />;
-      default:
-        return <Dashboard />;
     }
   };
 
