@@ -1,22 +1,54 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const TutorCard = ({ queryCalled, data, requestedCost }) => {
+const TutorCard = ({
+  queryCalled,
+  data,
+  requestedCost,
+  requestedSubject,
+  setRequestedCost,
+  setRequestedSubject,
+  setQueryCalled,
+}) => {
   const [show, setShow] = useState(false);
   const [modalInfo, setmodalInfo] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // back button
+  const form = document.querySelector(".requestForm");
+  const handleBack = () => {
+    // request form display block
+    form.style.display = "block";
+    // set states back to intials
+    setRequestedCost(0);
+    setQueryCalled(false);
+    setRequestedSubject("");
+  };
+
   if (queryCalled) {
     if (data) {
       const filteredData = data.filter((tutor) => tutor.cost <= requestedCost);
       if (filteredData.length === 0) {
-        return <>No tutors found</>;
+        return (
+          <>
+            {" "}
+            <div style={{ fontSize: "x-large" }}>No tutors found</div>
+            <div>
+              <span onClick={() => handleBack()} className="backBtn">
+                New request
+              </span>
+            </div>
+          </>
+        );
       } else {
         return (
           <>
             {/* TUTOR CARD */}
+            <div>
+              Showing tutors for {requestedSubject} at ${requestedCost} per hour
+            </div>
 
             <ul>
               {filteredData?.map((tutor, i) => (
@@ -61,6 +93,13 @@ const TutorCard = ({ queryCalled, data, requestedCost }) => {
                 </>
               ))}{" "}
             </ul>
+            {/* back button */}
+
+            <div>
+              <span onClick={() => handleBack()} className="backBtn">
+                New request
+              </span>
+            </div>
           </>
         );
       }

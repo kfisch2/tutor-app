@@ -9,17 +9,6 @@ import TutorCard from "./TutorCard";
 import "./../../Student/Student.css";
 
 const RequestForm = () => {
-  const [page] = useState([
-    {
-      name: "Form",
-    },
-    {
-      name: "Results",
-    },
-  ]);
-
-  const [currentPage, setCurrentPage] = useState(page[0]);
-
   // Render subjects
   const { data: subjectData } = useQuery(QUERY_SUBJECTS);
 
@@ -44,7 +33,10 @@ const RequestForm = () => {
     setData(tutor);
   };
 
+  const form = document.querySelector(".requestForm");
+
   const handleSubmit = () => {
+    form.style.display = "none";
     setQueryCalled(true);
     fetchTutors({
       variables: { subjects: requestedSubject },
@@ -219,6 +211,18 @@ const RequestForm = () => {
           Find your tutor!
         </button>
       </form>
+      <div className="tutorCards">
+        {" "}
+        <TutorCard
+          data={data}
+          queryCalled={queryCalled}
+          setQueryCalled={setQueryCalled}
+          requestedCost={requestedCost}
+          setRequestedCost={setRequestedCost}
+          requestedSubject={requestedSubject}
+          setRequestedSubject={setRequestedSubject}
+        />
+      </div>
     </div>
   );
 };
