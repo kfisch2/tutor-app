@@ -1,0 +1,27 @@
+.pagination-container{
+    height: fit-content;
+    text-align: center;
+    position:fixed;
+    bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+
+
+}
+
+.tutor-cards{
+   
+    border-radius: 5px;
+    font-family: "Asap Condensed", sans-serif;
+    margin: 5px !important;
+    background-color: white;
+    color: black;
+    font-size: large;
+    border: solid 1px #393939;
+
+}
+
+
+.tutor-cards:hover{
+    border: solid 1px blue;
+}
