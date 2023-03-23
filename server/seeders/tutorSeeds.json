@@ -1,0 +1,10 @@
+[
+  {
+    "email": "email@example.com",
+    "password": "password123",
+    "username": "Brian Kernighan",
+    "bio": "hello I am tutor",
+    "cost": 23,
+    "subjects": ["Science", "Math"]
+  }
+]

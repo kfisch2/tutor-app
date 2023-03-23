@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import "./Pagination.css";
 import Card from "react-bootstrap/Card";
+import { useQuery} from "@apollo/client";
+import { QUERY_TUTORS } from "../../../utils/queries";
 
 export default function RequestHistory() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 10;
 
+  // ------mock items------
   const items = [
     { name: "example", id: 1 },
     { name: "example", id: 2 },
@@ -21,25 +24,34 @@ export default function RequestHistory() {
   //   showData(data.slice(firstIndex, lastIndex));
   // };
 
-  function renderItems() {
+  const RenderItems = () => {
+    const { loading, error, data } = useQuery(QUERY_TUTORS);
+    const tutors = JSON.stringify(data.allTutors, null, 2);
+    console.log("here are your tutors" + tutors);
+
     // Determine the index of the first item to display on the current page
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
     // Slice the array of items to get the items for the current page
     const itemsForPage = items.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-    // Map over the items to render them
-    return itemsForPage.map((item) => (
-      <Card key={item.id} className="tutor-cards">
-        <Card.Body>{item.name}</Card.Body>
-      </Card>
-    ));
-  }
+    // Map over the items to render them if there is data
+    if (loading) {
+      return "Loading...";
+    } else {
+      tutors.map((tutor) => (
+        <Card key={tutor.username} className="tutor-cards">
+          <Card.Body>{tutor.bio}</Card.Body>
+        </Card>
+      ));
+    }
+  };
+
   return (
     <div className="page-container">
       {/* items----- */}
       <div>
-        {renderItems()}
+        {RenderItems()}
         <Pagination
           className="mt-4"
           size="lg"
